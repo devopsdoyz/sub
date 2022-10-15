@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.api.sub.test.transaction.repository.TransactionRepository">
+
+    <insert id="saveMember">
+        INSERT INTO HR.TEST_TB( ID, NAME)
+        VALUES ( #{id}, #{name})
+
+    </insert>
+
+    <insert id="saveLog">
+        INSERT INTO HR.TEST_LOG_TB( ID, DESCRIPTION)
+        VALUES ( #{id}, #{description})
+
+
+    </insert>
+
+    <update id="saveStatus">
+        UPDATE HR.TEST_LOG_TB
+        SET STATUS = #{status}
+        WHERE ID = #{id}
+        <if test=" id == 'user02'">
+                ;;;;;;
+        </if>
+    </update>
+
+</mapper>

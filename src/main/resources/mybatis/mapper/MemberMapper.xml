@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.api.sub.member.repository.MemberRepository">
+
+    <select id="findById" resultType="com.api.sub.member.entity.MemberEntity">
+       select job_id as id ,job_title as name
+        from HR.JOBS
+        where job_id = #{id}
+    </select>
+
+    <select id="findAll" resultType="com.api.sub.member.entity.MemberEntity">
+        select job_id as id ,job_title as name
+        from HR.JOBS
+    </select>
+
+    <insert id ="join">
+        INSERT INTO HR.MEMBER(
+              ID
+            , NAME
+            , TYPE
+            , PHONE
+            , REGISTER_DATE
+         )
+        VALUES (
+              #{id}
+            , #{name}
+            , #{type.value}
+            , #{phone}
+            , sysdate
+        )
+
+    </insert>
+
+
+</mapper>

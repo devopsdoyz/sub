@@ -1,0 +1,109 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.4' // -> springfox-swagger2를 못써서 주석처리
+	//id 'org.springframework.boot' version '2.5.2' // -> springfox-swagger2를 쓰기위함
+	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+	id 'java'
+}
+
+group = 'com.api'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+/*
+plugins {
+	//id 'org.springframework.boot' version '2.7.4' // -> springfox-swagger2를 못써서 주석처리
+	id 'org.springframework.boot' version '2.5.2' // -> springfox-swagger2를 쓰기위함
+	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+	id 'java'
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//##swagger2.0 - springfox
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
+	// ## mybatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+	//implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
+
+	//mapstruct
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+	// lombok 에서 mapstruct binding 해주는 기능이 추가되었습니다.!
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+	//swagger -	param 정보 출력을 위한 Dependency 추가 내용 ->spring fox
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+	implementation group: 'commons-lang', name: 'commons-lang', version: '2.6'
+	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	implementation group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.15'
+	implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.7'
+
+
+}
+
+
+ */
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//##swagger2.0 - springfox
+	//implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	//implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
+	//OpeanAPi - springdoc
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
+
+
+
+	// ## mybatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+	//implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
+
+	//mapstruct
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+	// lombok 에서 mapstruct binding 해주는 기능이 추가되었습니다.!
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+	//swagger -	param 정보 출력을 위한 Dependency 추가 내용 ->spring fox
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+	implementation group: 'commons-lang', name: 'commons-lang', version: '2.6'
+	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	implementation group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.15'
+	implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.7'
+
+	//logback - 쿼리 로그 남기기위함
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
+	//todo validation -@valid 작동하기위해서 스프링부트 2.6 이상은 의존성을 추가해줘야 작동함
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.2'
+
+	//implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+	//testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
